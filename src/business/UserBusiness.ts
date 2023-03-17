@@ -50,17 +50,21 @@ export class UserBusiness {
     async getUserByEmail(user: LoginInputDTO) {
 
         const userFromDB = await this.userDatabase.getUserByEmail(user.email);
-
-        const hashManager = new HashManager();
-        const hashCompare = await hashManager.compare(user.password, userFromDB.getPassword());
-
-        const authenticator = new Authenticator();
-        const accessToken = authenticator.generateToken({ id: userFromDB.getId(), role: userFromDB.getRole() });
+        const hashCompare = await this.hashManager.compare(user.password, userFromDB.getPassword());
+        const accessToken = this.authenticator.generateToken({ id: userFromDB.getId(), role: userFromDB.getRole() });
 
         if (!hashCompare) {
             throw new Error("Invalid Password!");
         }
 
         return accessToken;
+    }
+
+    getUserAll = async (token: string): Promise<User[]> => {
+
+        const userFromDB:User[] = await this.userDatabase.getUserAll( );
+        const accessToken = this.authenticator.getData(token);
+
+        return userFromDB;
     }
 }

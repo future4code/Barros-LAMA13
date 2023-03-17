@@ -1,5 +1,5 @@
 import { BaseDatabase } from "./BaseDatabase";
-import { Band } from "../model/band";
+import { Band, BandDBDTO } from "../model/band";
 import { BandRepository } from "../business/BandRepository";
 
 export class BandDatabase extends BaseDatabase implements BandRepository {
@@ -21,12 +21,29 @@ export class BandDatabase extends BaseDatabase implements BandRepository {
     }
   }
 
-  getAllBand = async (): Promise<Band[]> => {
+  getAllBand = async (): Promise<BandDBDTO[]> => {
     const result = await this.getConnection()
       .select("*")
       .from(BandDatabase.TABLE_NAME)
       
     return result;
+  }
+
+  getBand = async (bandId: string): Promise<BandDBDTO> => {
+    const result = await this.getConnection()
+      .select("*")
+      .from(BandDatabase.TABLE_NAME)
+      .where({id:bandId})
+      
+      return result[0];
+  }
+  getBandName = async (band: string): Promise<BandDBDTO> => {
+    const result = await this.getConnection()
+      .select("*")
+      .from(BandDatabase.TABLE_NAME)
+      .where({name:band})
+      
+      return result[0];
   }
 
 }

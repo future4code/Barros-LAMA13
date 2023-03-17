@@ -37,16 +37,33 @@ export class Band{
     setResponsible(responsible: string){
         this.responsible = responsible;
     }
+
+    static toBandModel(band: any): Band {
+        return new Band(band.id, band.name, band.musicGenre, band.responsible);
+      }
   
 }
 
-export interface BandInputDTO{
+export interface BandDBDTO{
+    id: string;
+    name: string;
+    music_genre: string;
+    responsible: string;
+}
+export interface BandDTO{
+    id: string;
+    name: string;
     musicGenre: string;
     responsible: string;
+}
+export interface BandInputDTO{
     name: string;
+    musicGenre: string;
+    responsible: string;
+    token: string;
 }
 
-export interface LoginInputDTO{
-    musicGenre: string;
-    responsible: string;
+export interface bandIdInputDTO{
+    bandId: string;
+    token: string;
 }

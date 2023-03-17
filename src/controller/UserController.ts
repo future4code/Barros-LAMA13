@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
-import { UserInputDTO, LoginInputDTO} from "../model/User";
+import { UserInputDTO, LoginInputDTO, User} from "../model/User";
 import { UserBusiness } from "../business/UserBusiness";
-import { BaseDatabase } from "../data/BaseDatabase";
 
 export class UserController {
   constructor(private userBusiness: UserBusiness){}
@@ -14,8 +13,6 @@ export class UserController {
                 password: req.body.password,
                 role: req.body.role
             }
-
-            console.log("passei");
                                     
             const token = await this.userBusiness.createUser(input);
 
@@ -39,7 +36,21 @@ export class UserController {
             const token = await this.userBusiness.getUserByEmail(loginData);
 
             res.status(200).send({ token });
+        } catch (error:any) {
+            res.status(400).send({ error: error.message });
+        }
 
+    }
+
+    getUserAll = async (req: Request, res: Response):Promise<void> => {
+
+        try {
+            
+            const token = req.headers.authorization as string;
+
+            const users:User[] = await this.userBusiness.getUserAll(token);
+
+            res.status(200).send({ users });
         } catch (error:any) {
             res.status(400).send({ error: error.message });
         }
