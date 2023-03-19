@@ -4,10 +4,10 @@
 Projeto desenvolvido como didática de back-end para as turmas JBL LABENU com conteúdos que englobam o universo da criação de APIs com a temática de um sistema que permita o gerenciamento de shows.
 
 ## Link Documentação Postman
-[Doc_Postman](https://documenter.getpostman.com/view/22363157/2s93CNLYKU)
+[Doc_Postman](https://documenter.getpostman.com/view/22363157/2s93JzMgXY)
 
 ## Link Deploy Render
-https://cookenu21.onrender.com
+https://lama13.onrender.com
 
 ##  👩🏾Pessoa Desenvolvedora do Projeto
 
