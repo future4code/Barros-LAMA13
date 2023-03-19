@@ -16,5 +16,5 @@ const bandBusiness = new BandBusiness(
 const bandController = new BandController(bandBusiness);
 
 bandRouter.post("/create", (req, res) => bandController.createBand(req, res));
-bandRouter.get("/all", (req, res) => bandController.gerBandAll(req, res));
-bandRouter.get("/:id", (req, res) => bandController.gerBand(req, res));
+bandRouter.get("/all", (req, res) => bandController.getBandAll(req, res));
+bandRouter.get("/:id", (req, res) => bandController.getBand(req, res));

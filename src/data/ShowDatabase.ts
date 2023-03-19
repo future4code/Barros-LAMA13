@@ -1,5 +1,5 @@
 import { BaseDatabase } from "./BaseDatabase";
-import { Show, ShowDBDTO } from "../model/Show";
+import { Show, ShowDBDTO, ShowInputDBDTO } from "../model/Show";
 import { ShowRepository } from "../business/ShowRepository";
 
 export class ShowDatabase extends BaseDatabase implements ShowRepository {
@@ -37,13 +37,35 @@ export class ShowDatabase extends BaseDatabase implements ShowRepository {
       
       return result[0];
   }
-  getShowName = async (show: string): Promise<ShowDBDTO> => {
+  getShowDay = async (day: string): Promise<ShowDBDTO[]> => {
     const result = await this.getConnection()
       .select("*")
       .from(ShowDatabase.TABLE_NAME)
-      .where({name: show})
+      .where({week_day: day})
       
-      return result[0];
+      return result;
   }
+
+  getShowStartSchedule = async (input: ShowInputDBDTO): Promise<ShowDBDTO[]> => {
+    const {weekDay, startTime, endTime, bandId} = input;
+    const result = await this.getConnection()
+      .select("*")
+      .from(ShowDatabase.TABLE_NAME)
+      .where({week_day: weekDay})
+      .whereBetween('start_time', [`${startTime}`,`${endTime}`])
+      
+      return result;
+  }
+  getShowEndSchedule = async (input: ShowInputDBDTO): Promise<ShowDBDTO[]> => {
+    const {weekDay, startTime, endTime, bandId} = input;
+    const result = await this.getConnection()
+      .select("*")
+      .from(ShowDatabase.TABLE_NAME)
+      .where({week_day: weekDay})
+      .whereBetween('end_time', [`${startTime}`,`${endTime}`])
+      
+      return result;
+  }
+
 
 }

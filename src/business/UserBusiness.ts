@@ -49,6 +49,7 @@ export class UserBusiness {
 
     async getUserByEmail(user: LoginInputDTO) {
 
+        
         const userFromDB = await this.userDatabase.getUserByEmail(user.email);
         const hashCompare = await this.hashManager.compare(user.password, userFromDB.getPassword());
         const accessToken = this.authenticator.generateToken({ id: userFromDB.getId(), role: userFromDB.getRole() });

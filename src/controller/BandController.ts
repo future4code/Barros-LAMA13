@@ -24,7 +24,7 @@ export class BandController {
 
     }
 
-    gerBandAll = async (req: Request, res: Response): Promise<void> => {
+    getBandAll = async (req: Request, res: Response): Promise<void> => {
 
         try {
 
@@ -38,7 +38,7 @@ export class BandController {
         }
 
     }
-    gerBand = async (req: Request, res: Response): Promise<void> => {
+    getBand = async (req: Request, res: Response): Promise<void> => {
 
         try {
 

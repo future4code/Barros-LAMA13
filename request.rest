@@ -38,10 +38,35 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRlN2QwYWExLWE3ZGUt
 ### Return All Bands
 GET http://localhost:3000/band/all
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRlN2QwYWExLWE3ZGUtNDRlYi04ODM5LWRhYjgyMTc4YWU2MCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3OTAwMzYwMiwiZXhwIjoxNjc5MDA1NDAyfQ.UVaCB2hNcVHdDFnWWP5E7RgPqj3nIAzh_v2Ir8qYQ0U
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRlN2QwYWExLWE3ZGUtNDRlYi04ODM5LWRhYjgyMTc4YWU2MCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3OTE0MTY3NiwiZXhwIjoxNjc5MTQzNDc2fQ.kxmj67K8lco5wsiWHd0sfFlGaM8D3Ilw9ns4_JhBrfI
 
 ### Return Band
 GET http://localhost:3000/band/48e1c050-5cd3-478a-bc75-d1b681f2c91a
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRlN2QwYWExLWE3ZGUtNDRlYi04ODM5LWRhYjgyMTc4YWU2MCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3OTAwMzYwMiwiZXhwIjoxNjc5MDA1NDAyfQ.UVaCB2hNcVHdDFnWWP5E7RgPqj3nIAzh_v2Ir8qYQ0U
 
+### Create show
+POST http://localhost:3000/show/create
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRlN2QwYWExLWE3ZGUtNDRlYi04ODM5LWRhYjgyMTc4YWU2MCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3OTIyOTIxMiwiZXhwIjoxNjc5MjMxMDEyfQ.vt2VECO5xxwVQU1sz99JMfaWfq251ucoDlHA0VQSIco
+
+{    
+    "weekDay": "DOMINGO",
+    "startTime": "15",
+    "endTime": "17",
+    "bandId": "48e1c050-5cd3-478a-bc75-d1b681f2c91a"
+}
+
+### Return All shows
+GET http://localhost:3000/show/all
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRlN2QwYWExLWE3ZGUtNDRlYi04ODM5LWRhYjgyMTc4YWU2MCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3OTIyOTIxMiwiZXhwIjoxNjc5MjMxMDEyfQ.vt2VECO5xxwVQU1sz99JMfaWfq251ucoDlHA0VQSIco
+
+### Return show
+GET http://localhost:3000/show/weekday
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRlN2QwYWExLWE3ZGUtNDRlYi04ODM5LWRhYjgyMTc4YWU2MCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3OTE0MTY3NiwiZXhwIjoxNjc5MTQzNDc2fQ.kxmj67K8lco5wsiWHd0sfFlGaM8D3Ilw9ns4_JhBrfI
+
+{
+    "weekDay": "SEXTA"
+}

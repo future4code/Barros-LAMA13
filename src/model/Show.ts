@@ -42,6 +42,19 @@ export class Show{
     setend_time(end_time: string){
         this.end_time = end_time;
     }
+
+    static stringToWeekDay(input: string): WeekDay{
+        switch (input) {
+            case "SEXTA":
+              return WeekDay.SEXTA;
+            case "SABADO":
+              return WeekDay.SABADO;
+            case "DOMINGO":
+              return WeekDay.DOMINGO;
+            default:
+              throw new Error("Invalid Week Day");
+          }
+    }
 }
 
 export interface ShowDBDTO{
@@ -73,6 +86,16 @@ export interface ShowInputDBDTO{
 }
 
 export interface ShowIdInputDTO{
-    ShowId: string;
+    showId: string;
     token: string;
+}
+export interface ShowDayInputDTO{
+    weekDay: string;
+    token: string;
+}
+
+export enum WeekDay{
+    SEXTA = 'SEXTA',
+    SABADO = 'SABADO',
+    DOMINGO = 'DOMINGO'
 }

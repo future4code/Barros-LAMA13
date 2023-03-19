@@ -9,6 +9,26 @@ export class InvalidName extends CustomError{
         super(400, 'Fill in the fields "weekDay", "startTime", "endTime" e ShowId')
     }
 }
+export class InvalidId extends CustomError{ 
+    constructor(){
+        super(400, 'Fill in the fields "showId"')
+    }
+}
+export class InvalidInputWeekDay extends CustomError{ 
+    constructor(){
+        super(400, 'Fill in the fields "weekDay"')
+    }
+}
+export class InvalidWeekDay extends CustomError{ 
+    constructor(day: string){
+        super(400, `${day} cannot be different from Friday, Saturday and Sunday`)
+    }
+}
+export class NotFoundWeekDay extends CustomError{ 
+    constructor(day: string){
+        super(400, `No show found for ${day}`)
+    }
+}
 
 
 export class InvalidmusicGenreRegistered extends CustomError{ 
@@ -19,7 +39,7 @@ export class InvalidmusicGenreRegistered extends CustomError{
 
 export class ShowNotFound extends CustomError{ 
     constructor(){
-        super(404, "Show not found")
+        super(404, "Band not found")
     }
 }
 
@@ -55,5 +75,31 @@ export class InvalidDelete extends CustomError{
 export class InvalidProfile extends CustomError{ 
     constructor(){
         super(401, "Invalid Authorization!")
+    }
+}
+export class InvalidStarDBtTime extends CustomError{ 
+    constructor(){
+        super(401, "Selected start time is busy!")
+    }
+}
+export class InvalidEndDBTime extends CustomError{ 
+    constructor(){
+        super(401, "The selected end time is busy!")
+    }
+}
+export class InvalidTime extends CustomError{ 
+    constructor(){
+        super(401, "Invalid time!")
+    }
+}
+
+export class InvalidStartTime extends CustomError{ 
+    constructor(){
+        super(401, "the selected start time is not valid, expected 8h ás 22h ")
+    }
+}
+export class InvalidEndTime extends CustomError{ 
+    constructor(){
+        super(401, "the selected end time is not valid, expected 9h ás 23h")
     }
 }
